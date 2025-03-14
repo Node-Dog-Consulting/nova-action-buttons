@@ -14,11 +14,11 @@
         <div v-if="hasIcon" :class="{'ml-2': text}">
             <Icon v-if="icon" :type="icon" />
             <span v-if="iconHtml" v-html="iconHtml"></span>
-            <img v-if="iconUrl" :alt="title" :src="iconUrl" class="w-6 h-6 inline" />
+            <img v-if="iconUrl" :alt="title" :src="iconUrl" class="inline w-6 h-6" />
         </div>
 
         <!-- Tooltip -->
-        <div v-if="tooltipIsVisible && tooltip" class="absolute z-10 left-1/2 -top-1 transform -translate-x-1/2 -translate-y-full px-2 py-1 bg-gray-700 text-white text-xs rounded">
+        <div v-if="tooltipIsVisible && tooltip" class="absolute z-10 px-2 py-1 text-xs text-white transform -translate-x-1/2 -translate-y-full bg-gray-700 rounded left-1/2 -top-1">
             {{ tooltip }}
         </div>
 
@@ -80,9 +80,9 @@
     // Computed
     // Get action button classes
     const actionButtonClasses = computed(() => [
-        'flex-shrink-0', 'shadow', 'rounded', 'focus:outline-none', 'ring-primary-200', 'dark:ring-gray-600',
+        'shrink-0', 'shadow', 'rounded', 'focus:outline-none', 'ring-primary-200', 'dark:ring-gray-600',
         'focus:ring', 'bg-primary-500', 'hover:bg-primary-400', 'active:bg-primary-600',
-        'text-white', 'dark:text-gray-800', 'inline-flex', 'items-center', 'font-bold', 'px-2', 'mx-1', 'h-9', 'text-sm', 'flex-shrink-0',
+        'text-white', 'dark:text-gray-800', 'inline-flex', 'items-center', 'font-bold', 'px-2', 'mx-2', 'h-9', 'text-sm', 'shrink-0',
     ])
 
     // Computed
@@ -105,3 +105,25 @@
     const onMouseEnterTooltip = () => tooltipIsVisible.value = hasTooltip.value;
 
 </script>
+
+<style lang="css" scoped>
+.-top-1 {
+    top: -.25rem
+}
+
+.left-1\/2 {
+    left: 50%
+}
+
+.-translate-x-1\/2 {
+    --tw-translate-x: -50%
+}
+
+.-translate-x-1\/2,.-translate-y-full {
+    transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.-translate-y-full {
+    --tw-translate-y: -100%
+}
+</style>
